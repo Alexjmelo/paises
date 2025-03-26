@@ -1,4 +1,4 @@
-const BASE_API_URL = "https://restcountries.com/v3.1";
+// const BASE_API_URL = "https://restcountries.com/v3.1";
 
 // export async function pesquisarPorNome(nome) {
 //     try {
