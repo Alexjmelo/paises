@@ -1,39 +1,52 @@
 "use client";
+import { useEffect, useState } from "react";
+import { CountryCard } from "./_components/country-card";
+import HeaderBase from "./_components/header-base";
+import api from "@/lib/api/axios";
 
-import { Button } from "@/components/ui/button";
-import React, { useEffect, useState } from "react";
-
-interface CountryResponse {
+interface CountryResponseProps {
+  translations: {
+    por: {
+      common: string;
+    };
+  };
   name: {
     common: string;
-  }
+  };
+  flags: {
+    png: string;
+  };
 }
 
-const page = () => {
-  const [value, setValue] = useState(0);
-  const [data, setData] = useState<CountryResponse[]>([])
-
-  const handleIncrementValue = () => {
-    setValue(value + 1);
-  };
+export default function HomePage() {
+  const [countries, setCountries] = useState<CountryResponseProps[]>([]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json()) // Converte o corpo da resposta para JSON
-      .then((data) => console.log(data)) // Exibe os dados no console
-      .catch((error) => console.error("Erro ao buscar os dados:", error)); // Captura erros
-  }, [value]);
-
+    // Fazendo a requisição para pegar os dados da API
+    api
+      .get("/all")
+      .then((response) => {
+        setCountries(response.data.slice(0, 15));
+      })
+      .catch((error) => console.error("Erro ao buscar país:", error));
+  }, []);
   return (
-    <>
-      <ul>
-        {data.map((country) => (
-          <li key={country.name.common}>{country.name.common}</li>
-        ))}
-      </ul>
-      <Button onClick={handleIncrementValue}>{value}</Button>
-    </>
+    <div>
+      <div>
+        <HeaderBase />
+      </div>
+      <div className="bg-gray-100">
+        <div className="grid grid-cols-5 gap-3 mx-auto max-w-7xl p-4">
+          {countries.map((country) => (
+            <CountryCard
+              key={country.name.common}
+              flag={country.flags.png}
+              name={country.translations.por.common}
+            />
+          ))}
+        </div>
+      </div>
+      <div/>
+    </div>
   );
-};
-
-export default page;
+}
