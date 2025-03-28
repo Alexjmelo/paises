@@ -37,11 +37,11 @@ export default function HomePage() {
       </div>
       <div className="bg-gray-100">
         <div className="grid grid-cols-5 gap-3 mx-auto max-w-7xl p-4">
-          {countries.map((country) => (
+          {countries.map((countries) => (
             <CountryCard
-              key={country.name.common}
-              flag={country.flags.png}
-              name={country.translations.por.common}
+              key={countries.name.common}
+              flag={countries.flags.png}
+              name={countries.name.common}
             />
           ))}
         </div>

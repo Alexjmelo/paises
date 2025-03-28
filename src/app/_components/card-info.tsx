@@ -13,56 +13,65 @@ interface CardInfoProps {
   capital: string;
   continents: string;
   population: number;
-  flag: string;
+  flags: string;
   borders: string;
   languages: string;
 }
 
+const formatPopulation = (population: number) => {
+  if (population >= 1000000000) {
+    return (population / 1000000000).toFixed(1) + " B"; 
+  } else if (population >= 1000000) {
+    return (population / 1000000).toFixed(1) + " M"; 
+  } else if (population >= 1000) {
+    return (population / 1000).toFixed(1) + " K"; 
+  } else {
+    return population.toString();
+  }
+};
+
 export const CardInfo = ({
   name,
-  translation,
-  por,
-  common,
   capital,
   continents,
   population,
-  flag,
-  borders,
+  flags,
   languages,
 }: CardInfoProps) => {
+
+  
   return (
     <div className="flex flex-col gap-2">
       <h1 className="text-black text-3xl mt-8 text-center">{name}</h1>
       <Link href="/">
         <ButtonIcon />
       </Link>
-      <Card className="flex flex-row gap-80 p-4 w-fit">
+      <Card className="flex flex-row justify-between w-auto gap-96 p-4">
         <div>
-          🏙️ <strong>Capital:</strong> {} <br />
-          🗺️ <strong>Continente:</strong> {continents[0]} <br /> * 👨‍👩‍👧‍👦{" "}
-          <strong>População:</strong> {(population / 1000000).toFixed(1) + " M"}{" "}
-          <br />
-          🗣️ <strong>Linguas faladas:</strong> <br />{" "}
-          <div className="text-white border rounded-xl bg-[#4338CA] text-center w-fit px-2">
-            {Object.values(languages).join(", ")}
-          </div>
+          🏙️ <strong>Capital:</strong> {capital} <br />
+          🗺️ <strong>Continente:</strong> {continents} <br />
+          👨‍👩‍👧‍👦 <strong>População:</strong> {formatPopulation(population)} <br />
+          🗣️ <strong>Linguas faladas:</strong>
+          <div className="flex gap-1 flex-col">
+  {Object.values(languages).map((language, i) => (
+    <div
+      key={i}
+      className="text-white border rounded-xl bg-[#4338CA] text-center w-fit px-2 py-1"
+    >
+      {language}
+    </div>
+  ))}
+</div>
         </div>
-        <div>
-          <Image
-            src={flag}
-            alt={`Bandeira de ${name}`}
-            width={300}
-            height={120}
-            className=" flex border rounded-md mb-2"
-          />
-        </div>
+        <div className="flex relative w-80 h-40 text-right">
+                  <Image
+                  src={flags}
+                  alt={`Bandeira da ${name}`}
+                  fill
+                  />
+                </div>
       </Card>
-      <div className="mt-4 w-fit h-fit">
-        <p>Países que fazem fronteira</p>
-        <Link href="/country/${name.common}" className="h-min w-min">
-          <CardSmall flag={""} name={""} borders={""} />
-        </Link>
-      </div>
+      
     </div>
   );
 };

@@ -2,27 +2,30 @@
 
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface CountryProps {
   flag: string;
   name: string;
-  borders: string;
 }
 
-export const CardSmall:  React.FC<CountryProps> = ({  }) => {
-  
+export const CardSmall = ({flag ,name }: CountryProps) => {
 
   return (
-    <Card className="w-fit h-fit p-2 text-center">
-      {/* <Image
-        src={por.flags.png}
-        alt={`Bandeira de ${por.name.common}`}
-        width={160}
-        height={80}
-        className="border rounded-lg mb-2"
-      />
-      <span>{por.translations.por.common}</span> */}
-    </Card>
+    <div>
+     <Card className="p-4">
+       <Link href={`/name/${name}?fullText=true`}>
+         <div className="flex relative w-40 h-24">
+          <Image
+          src={flag}
+          alt={`Bandeira da ${name}`}
+          fill
+          />
+         </div>
+         <p className="text-center py-2">{name}</p>
+        </Link>
+     </Card>
+    </div>
   );
 }
