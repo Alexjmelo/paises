@@ -7,9 +7,6 @@ import Image from "next/image";
 
 interface CardInfoProps {
   name: string;
-  translation: string;
-  por: string;
-  common: string;
   capital: string;
   continents: string;
   population: number;
@@ -42,11 +39,11 @@ export const CardInfo = ({
   
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-black text-3xl mt-8 text-center">{name}</h1>
+      <h1 className="text-black text-3xl font-bold md:mt-4 text-center">{name}</h1>
       <Link href="/">
         <ButtonIcon />
       </Link>
-      <Card className="flex flex-row justify-between w-auto gap-96 p-4">
+      <Card className="flex flex-row flex-wrap justify-between w-auto gap-3 md:gap-96 p-4">
         <div>
           🏙️ <strong>Capital:</strong> {capital} <br />
           🗺️ <strong>Continente:</strong> {continents} <br />
@@ -56,14 +53,14 @@ export const CardInfo = ({
   {Object.values(languages).map((language, i) => (
     <div
       key={i}
-      className="text-white border rounded-xl bg-[#4338CA] text-center w-fit px-2 py-1"
+      className="text-white border rounded-xl bg-indigo-700  text-center w-fit px-2 py-1"
     >
       {language}
     </div>
   ))}
 </div>
         </div>
-        <div className="flex relative w-80 h-40 text-right">
+        <div className="flex relative w-60 h-40 md:w-80 md:h-48 text-right">
                   <Image
                   src={flags}
                   alt={`Bandeira da ${name}`}

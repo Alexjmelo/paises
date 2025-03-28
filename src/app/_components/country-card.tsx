@@ -12,8 +12,8 @@ export const CountryCard = ({name, flag}: CountryCardProps) => {
 
   return (
     <Card className="p-4">
-      <Link href={`/name/${name}`}>
-        <div className="flex relative w-full h-36">
+      
+        <div className="flex relative w-full h-24 md:h-32">
           <Image
           src={flag}
           alt={`Bandeira da ${name}`}
@@ -21,7 +21,7 @@ export const CountryCard = ({name, flag}: CountryCardProps) => {
           />
         </div>
         <p className="text-center py-2">{name}</p>
-      </Link>
     </Card>
   );
 };
+
