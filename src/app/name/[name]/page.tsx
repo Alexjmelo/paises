@@ -58,7 +58,7 @@ export default function CountryPage() {
 
   return (
     <div className="flex flex-col">
-      <div>
+      <div className="bg-white">
         <HeaderBase />
       </div>
       <div className="bg-gray-100">

@@ -22,9 +22,7 @@ interface CountryResponseProps {
 export default function HomePage() {
   const [countries, setCountries] = useState<CountryResponseProps[]>([]);
 
-
   useEffect(() => {
-    // Fazendo a requisição para pegar os dados da API
     api
       .get("/all")
       .then((response) => {
@@ -35,23 +33,26 @@ export default function HomePage() {
 
   return (
     <div>
-      <div>
+      <div className="bg-white">
         <HeaderBase />
       </div>
-      <div className="bg-gray-100">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mx-auto max-w-7xl p-4">
+      <div>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mx-auto max-w-7xl md:pt-20 p-4">
           {countries.map((countries) => (
-            <Link href={`/name/${countries.name.common}?fullText=true`} key={countries.name.common}>
-            <CountryCard
-              key={countries.translations.por.common}
-              flag={countries.flags.png}
-              name={countries.translations.por.common}
-            />
+            <Link
+              href={`/name/${countries.name.common}?fullText=true`}
+              key={countries.name.common}
+            >
+              <CountryCard
+                key={countries.translations.por.common}
+                flag={countries.flags.png}
+                name={countries.translations.por.common}
+              />
             </Link>
           ))}
         </div>
       </div>
-      <div/>
+      <div />
     </div>
   );
 }

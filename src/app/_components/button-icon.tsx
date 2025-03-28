@@ -1,3 +1,4 @@
+"use client";
 import { MoveLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
