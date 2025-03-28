@@ -38,7 +38,7 @@ export default function HomePage() {
         <HeaderBase />
       </div>
       <div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mx-auto max-w-7xl md:pt-20 p-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mx-auto max-w-7xl md:pt-10 2xl:pt-20 p-4">
 {/*Existem dois tipos de passar as variaveis retornadas pela requisição, fazendo o map para puxar as variaveis da lista de paises, ou desestruturando uma função.*/}
           {countries.map((countries) => (
             <Link
