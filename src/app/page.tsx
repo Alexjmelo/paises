@@ -27,7 +27,9 @@ export default function HomePage() {
     api
       .get("/all")
       .then((response) => {
-        setCountries(response.data.slice(0, 15));
+        const allCountries = response.data;
+        const selectedCountries = allCountries.sort(() => Math.random() - 0.5).slice(0, 15);
+        setCountries(selectedCountries);
       })
       .catch((error) => console.error("Erro ao buscar país:", error));
   }, []);
