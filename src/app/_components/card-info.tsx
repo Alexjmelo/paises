@@ -40,7 +40,7 @@ export const CardInfo = ({
 
   
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 md:my-auto pt-8">
       <h1 className="text-black text-3xl font-bold md:mt-4 text-center">{name}</h1>
       <Link href="/">
         <ButtonIcon />
