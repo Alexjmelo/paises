@@ -21,7 +21,8 @@ interface CountryResponseProps {
 
 export default function HomePage() {
   const [countries, setCountries] = useState<CountryResponseProps[]>([]);
-
+// contries armazena a lista de paises, 
+//setCountries atualiza o estado e faz o react renderizar o componente com novo valor.
   useEffect(() => {
     api
       .get("/all")
@@ -38,6 +39,7 @@ export default function HomePage() {
       </div>
       <div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mx-auto max-w-7xl md:pt-20 p-4">
+{/*Existem dois tipos de passar as variaveis retornadas pela requisição, fazendo o map para puxar as variaveis da lista de paises, ou desestruturando uma função.*/}
           {countries.map((countries) => (
             <Link
               href={`/name/${countries.name.common}?fullText=true`}

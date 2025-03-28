@@ -25,7 +25,7 @@ const formatPopulation = (population: number) => {
   } else if (population >= 1000) {
     return (population / 1000).toFixed(1) + " K"; 
   } else {
-    return population.toString();
+    return population.toString() + " Pessoas";
   }
 };
 
@@ -52,6 +52,7 @@ export const CardInfo = ({
           👨‍👩‍👧‍👦 <strong>População:</strong> {formatPopulation(population)} <br />
           🗣️ <strong>Linguas faladas:</strong>
           <div className="flex gap-1 flex-col">
+{/*o map foi feito aqui pois languages é um objeto, diferente das outras variaveis, o objeto precisa ser iterado para pegar os valores.*/}
   {Object.values(languages).map((language, i) => (
     <div
       key={i}
