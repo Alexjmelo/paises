@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import React from "react";
-import { CardSmall } from "./card-small";
 import { Card } from "@/components/ui/card";
 import { ButtonIcon } from "./button-icon";
 import Image from "next/image";
@@ -13,7 +12,6 @@ interface CardInfoProps {
   continents: string;
   population: number;
   flags: string;
-  borders: string;
   languages: string;
 }
 
@@ -40,25 +38,25 @@ export const CardInfo = ({
 
   
   return (
-    <div className="flex flex-col gap-2 md:my-auto pt-8">
+    <div className="flex flex-col w-full gap-2 md:my-auto pt-8">
       <h1 className="text-black text-3xl font-bold md:mt-4 text-center">{name}</h1>
       <Link href="/">
         <ButtonIcon />
       </Link>
       <Card className="flex flex-row flex-wrap justify-between w-auto gap-3 md:gap-96 p-4">
         <div>
-          🏙️ <strong>Capital:</strong> {capital} <br />
-          🗺️ <strong>Continente:</strong> {continents} <br />
-          👨‍👩‍👧‍👦 <strong>População:</strong> {formatPopulation(population)} <br />
-          🗣️ <strong>Linguas faladas:</strong>
+          🏙️ <strong className="text-2xl text-bold">Capital:</strong> <span className="text-2xl font-normal">{capital}</span> <br />
+          🗺️ <strong className="text-2xl text-bold">Continente:</strong> <span className="text-2xl font-normal">{continents}</span> <br />
+          👨‍👩‍👧‍👦 <strong className="text-2xl text-bold">População:</strong> <span className="text-2xl font-normal">{formatPopulation(population)}</span> <br />
+          🗣️ <strong className="text-2xl text-bold">Linguas faladas:</strong>
           <div className="flex gap-1 flex-col">
 {/*o map foi feito aqui pois languages é um objeto, diferente das outras variaveis, o objeto precisa ser iterado para pegar os valores.*/}
   {Object.values(languages).map((language, i) => (
     <div
       key={i}
-      className="text-white border rounded-xl bg-indigo-700  text-center w-fit px-2 py-1"
+      className="text-white  border rounded-xl bg-indigo-700  text-center w-fit px-2 py-1"
     >
-      {language}
+      <span className="font-normal">{language}</span>
     </div>
   ))}
 </div>
@@ -68,6 +66,7 @@ export const CardInfo = ({
                   src={flags}
                   alt={`Bandeira da ${name}`}
                   fill
+                  className="border rounded-xl"
                   />
                 </div>
       </Card>

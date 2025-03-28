@@ -19,6 +19,7 @@ export const CardSmall = ({flag ,name }: CountryProps) => {
           src={flag}
           alt={`Bandeira da ${name}`}
           fill
+          className="border rounded-xl"
           />
          </div>
          <p className="text-center py-2">{name}</p>

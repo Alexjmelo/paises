@@ -1,7 +1,6 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CountryCardProps {
   name: string;
@@ -11,10 +10,12 @@ interface CountryCardProps {
 export const CountryCard = ({ name, flag }: CountryCardProps) => {
   return (
     <Card className="p-4">
-      <div className="flex relative w-full h-24 md:h-32">
-        <Image src={flag} alt={`Bandeira da ${name}`} fill />
+      <div className="flex relative w-full h-24 md:h-36">
+        <Image 
+        src={flag} alt={`Bandeira da ${name}`} fill
+        className="border rounded-xl" />
       </div>
-      <p className="text-center py-2">{name}</p>
+      <p className="text-center py-2 truncate font-bold text-2xl">{name}</p>
     </Card>
   );
 };
