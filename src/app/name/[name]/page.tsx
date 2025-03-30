@@ -1,6 +1,5 @@
 "use client";
 import { CardInfo } from "@/app/_components/card-info";
-import { CardSmall } from "@/app/_components/card-small";
 import { CountryCard } from "@/app/_components/country-card";
 import HeaderBase from "@/app/_components/header-base";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -63,7 +62,7 @@ export default function CountryPage() {
   if (!country)
     return (
       <div className="flex items-center space-x-10 space-y-10">
-        <Skeleton/>
+        <Skeleton />
       </div>
     );
 
@@ -89,11 +88,13 @@ export default function CountryPage() {
             <div className="mx-auto max-w-7xl p-4">
               <div>
                 <h1 className="flex relative bottom-2">
-                  <span className="text-4xl font-bold">Países que fazem fronteira:</span>
+                  <span className="text-4xl font-bold">
+                    Países que fazem fronteira:
+                  </span>
                 </h1>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mx-auto max-w-7xl md:pt-10 2xl:pt-20 p-4">
-              {borderCountries.map((borderCountry) => (
+                {borderCountries.map((borderCountry) => (
                   <Link
                     key={`${borderCountry.name.common}-${borderCountry.cca3}`}
                     href={`/name/${borderCountry.name.common}?fullText=true`}
