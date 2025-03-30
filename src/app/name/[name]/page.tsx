@@ -62,7 +62,7 @@ export default function CountryPage() {
 
   if (!country)
     return (
-      <div className="flex items-center space-x-10">
+      <div className="flex items-center space-x-10 space-y-10">
         <Skeleton/>
       </div>
     );
@@ -88,17 +88,17 @@ export default function CountryPage() {
           <div>
             <div className="mx-auto max-w-7xl p-4">
               <div>
-                <h1 className="text-2xl flex relative bottom-2">
-                  Países que fazem fronteira:
+                <h1 className="flex relative bottom-2">
+                  <span className="text-4xl font-bold">Países que fazem fronteira:</span>
                 </h1>
               </div>
-              <div className="grid grid-cols-2 gap-2 w-fit h-fit items-center md:grid md:grid-cols-6 md:gap-3">
-                {borderCountries.map((borderCountry) => (
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mx-auto max-w-7xl md:pt-10 2xl:pt-20 p-4">
+              {borderCountries.map((borderCountry) => (
                   <Link
                     key={`${borderCountry.name.common}-${borderCountry.cca3}`}
                     href={`/name/${borderCountry.name.common}?fullText=true`}
                   >
-                    <CardSmall
+                    <CountryCard
                       key={borderCountry.translations.por.common}
                       name={borderCountry.translations.por.common}
                       flag={borderCountry.flags.png}
@@ -110,9 +110,9 @@ export default function CountryPage() {
           </div>
         ) : (
           <div className="mx-auto max-w-7xl p-4">
-            <p className="text-2xl">
+            <span className="text-4xl font-bold">
               O país não faz fronteira com nenhum outro país.
-            </p>
+            </span>
           </div>
         )}
       </div>
