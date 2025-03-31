@@ -61,7 +61,7 @@ export const CardInfo = ({
           </div>
 
           <strong className="text-2xl text-bold">🗣️ Linguas faladas:</strong>
-          <div className="flex gap-1 flex-row">
+          <div className="flex gap-1 flex-col md:flex-row truncate">
             {/*o map foi feito aqui pois languages é um objeto, diferente das outras variaveis, o objeto precisa ser iterado para pegar os valores.*/}
             {Object.values(languages).map((language, i) => (
               <div
